@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 const Pagination = (props) => {
   const { totalpost, postsperpage, currentPage, setCurrentPage } = props;
   const pages = [];
-  for (let i = 1; i <= Math.ceil(totalpost / postsperpage); i++) {
+  for (let i = 1; i <= Math.min(10, Math.ceil(totalpost / postsperpage)); i++) {
     pages.push(i);
   }
   const previousPage = currentPage > 1 ? currentPage - 1 : 1;
-  const nextPage = currentPage < pages.length ? currentPage + 1 : pages.length;
+  const nextPage =
+    currentPage < Math.min(10, pages.length) ? currentPage + 1 : pages.length;
   return (
     <>
       <div className="bg-slate-700 h-14 w-full flex items-center justify-center  py-28">
@@ -30,7 +31,7 @@ const Pagination = (props) => {
             <Link to={`page/${page}`}>
               <button
                 className={`rounded-md w-9 p-3 bg-slate-800 text-white font-semibold mx-3 my-4  ${
-                  currentPage === page ? "bg-slate-400" : ""
+                  currentPage === page ? "bg-gray-500" : ""
                 }`}
                 onClick={() => {
                   setCurrentPage(page);

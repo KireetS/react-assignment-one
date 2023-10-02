@@ -15,7 +15,7 @@ const Carlist = (props) => {
         <div className="flex flex-wrap bg-slate-700 items-center p-20">
           {posts.map((car) => (
             <div key={car.id}>
-              <Carcard make={car.make} model={car.model} />
+              <Carcard model={car.title} image={car.image} />
             </div>
           ))}
         </div>
