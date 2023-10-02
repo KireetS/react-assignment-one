@@ -13,8 +13,8 @@ const Carlist = (props) => {
     <>
       <div className="min-h-screen w-full bg-slate-700 flex flex-grow">
         <div className="flex flex-wrap bg-slate-700 items-center p-20">
-          {posts.map((car) => (
-            <div key={car.id}>
+          {posts.map((car, index) => (
+            <div key={index}>
               <Carcard model={car.title} image={car.image} />
             </div>
           ))}
